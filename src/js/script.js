@@ -36,15 +36,21 @@
     for(let image of booksImage){
       image.addEventListener('dblclick', function(event){
         event.preventDefault();
-        image.classList.add('favorite');
-        const id = image.getAttribute('data-id');
+        if(!image.classList.contains('favorite')){
+          image.classList.add('favorite');
+          const id = image.getAttribute('data-id');
 
-        favoriteBooks.push(id);
-        console.log(favoriteBooks);
+          favoriteBooks.push(id);
+        } else if(image.classList.contains('favorite')){
+          image.classList.remove('favorite');
+          const id = image.getAttribute('data-id');
+          favoriteBooks.pop(id);
+        }
         
       });
     }
   }
   initActions();
-
+  console.log(favoriteBooks);
+  
 }///ostatni 
